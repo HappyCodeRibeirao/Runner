@@ -214,16 +214,16 @@ public class AudioProcessor : MonoBehaviour
 			++sinceLast;
 			// if current value is largest in the array, probably means we're on a beat
 			if (smaxix == now) {
-				//tapTempo();
+				tapTempo();
 				// make sure the most recent beat wasn't too recently
-				if (sinceLast > tempopd / 4) {
+				// if (sinceLast > tempopd / 4) {
 					onBeatOn.Invoke ();
 					blipDelay [0] = 1;
 					// record that we did actually mark a beat this frame
 					dobeat [now] = 1;
 					// reset counter of frames since last beat
 					sinceLast = 0;
-				}
+				// }
 			}else{
 				onBeatOff.Invoke ();	
 			}

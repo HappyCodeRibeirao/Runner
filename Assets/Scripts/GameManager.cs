@@ -80,14 +80,17 @@ public class GameManager : MonoBehaviour
 	private void Spawn()
 	{
 		int i;
+		Instantiate(obstaclePrefab,
+			            new Vector3(Mathf.Floor(Random.Range(-6, 6)), 5, obstacleStartX),
+			            Quaternion.identity, obstacles);
 
 		// Spawn 2 new obstacles
-		for (i = -7; i < 1; i += 7)
-		{
-			Instantiate(obstaclePrefab,
-			            new Vector3(Mathf.Floor(Random.Range(i, i + 7)), 1, obstacleStartX),
-			            Quaternion.identity, obstacles);
-		}
+		// for (i = -7; i < 1; i += 7)
+		// {
+		// 	Instantiate(obstaclePrefab,
+		// 	            new Vector3(Mathf.Floor(Random.Range(i, i + 7)), 1, obstacleStartX),
+		// 	            Quaternion.identity, obstacles);
+		// }
 	}
 
 	private void Update()
@@ -132,6 +135,6 @@ public class GameManager : MonoBehaviour
 
 	void onOnbeatOnDetected ()
 	{
-	Spawn();
+		Invoke("Spawn", 0.2f);
 	}
 }
